@@ -7,7 +7,6 @@ var START_GAME;
 var o_captus = []; // array para los captus
 var o_ptero = []; // array para los pterodactilos
 var sound = new Audio("res/sound/naruto_mejorado.mp3"); // OBTENCION DE AUDIO
-
 var puntaje_total = 0; // puntaje obtenido
 var global_time = 0; //tiempo global por cada impresion de imagenes
 var collision_enable = true; // enciende las coliciones [false/true]

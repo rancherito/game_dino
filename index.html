@@ -65,15 +65,22 @@
 
     <script type="text/javascript">
 
-      
+
 
       $(document).ready(function () {
         // iniciado metodos principales
         START_GAME = $('#play');
+
         CONTEND = $('#cont');
         SCORE_VERIF = $('#marcador');
         CONT_SCORE = $('#scor');
         RETURN_MENU = $('#return');
+        sound_control = $('#mute');
+
+        sound_enable = sound_control.is(':checked');
+        sound_control.change(function(){
+          sound_enable = sound_control.is(':checked');
+        });
         START_GAME.click(function(){
 
         sound.play();
@@ -91,7 +98,7 @@
           CONTEND.css({'display':'block'});
         });
 
-        
+
 
       });
 

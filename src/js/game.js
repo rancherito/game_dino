@@ -1,6 +1,7 @@
 function init_vars_game() {
 
         lienzo = $("#canvas");
+        
         w_lienzo = lienzo.parent();
         ctx = lienzo[0].getContext('2d');
         rec = new game_objet(ctx,{color: "gray"});
