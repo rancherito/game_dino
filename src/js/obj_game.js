@@ -6,7 +6,7 @@ var START_GAME;
 
 var o_captus = []; // array para los captus
 var o_ptero = []; // array para los pterodactilos
-var sound = new Audio("res/sound/naruto.mp3"); // OBTENCION DE AUDIO
+var sound = new Audio("res/sound/naruto_mejorado.mp3"); // OBTENCION DE AUDIO
 
 var puntaje_total = 0; // puntaje obtenido
 var global_time = 0; //tiempo global por cada impresion de imagenes
@@ -61,12 +61,12 @@ class c_dino extends game_objet{
 
   constructor(ctx){
     super(ctx,{color: "yellow"});
-    var l_texture_walk = ['res/img/DINO/DINO_01.png','res/img/DINO/DINO_02.png','res/img/DINO/DINO_03.png','res/img/DINO/DINO_04.png'];
+    var l_texture_walk = ['res/img/DINO/DINO_01.png','res/img/DINO/DINO_01.1.png','res/img/DINO/DINO_02.png','res/img/DINO/DINO_02.1.png','res/img/DINO/DINO_03.png','res/img/DINO/DINO_03.1.png','res/img/DINO/DINO_04.png'];
     var l_texture_jump = ['res/img/DINO/DINO_JUMP_01.png'];
     this.texture_walk = [];
     this.texture_jump = [];
 
-    this.ips = 1; //IMAGENES POR SEGUNDO
+    this.ips = 2; //IMAGENES POR SEGUNDO
     this.jump = false; // SALTO DEL DINOSAURIO
     this.default_fly = 22; //VELOCIDAD DE ELEVACION ESTATICA
     this.fly_d = this.default_fly; // VELOCIDAD DE ELEVACION DINAMICA
