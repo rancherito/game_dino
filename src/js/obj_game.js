@@ -27,6 +27,7 @@ var game_objet = class game_objet {
     this.color = "black";
     this.ctx = ctx;
     this.col = false;
+    this.img = '';
     if (typeof settings !== "undefined") {
       this.ctx_update(settings);
     }
@@ -39,6 +40,7 @@ var game_objet = class game_objet {
     if(typeof settings.x !== "undefined") this.position.x = settings.x;
     if(typeof settings.y !== "undefined") this.position.y = settings.y;
     if(typeof settings.color !== "undefined") this.color = settings.color;
+    if(typeof settings.img !== "undefined") this.img = settings.img;
     return this;
   }
 
@@ -56,6 +58,9 @@ var game_objet = class game_objet {
     this.ctx.fillRect(this.position.x,this.position.y,this.size.w,this.size.h);
     return this;
   }
+  drawImage(){
+    this.ctx.drawImage(this.img,this.position.x,this.position.y,this.size.w,this.size.h);
+  }
 }
 class c_dino extends game_objet{
 
@@ -66,7 +71,7 @@ class c_dino extends game_objet{
     this.texture_walk = [];
     this.texture_jump = [];
 
-    this.ips = 2; //IMAGENES POR SEGUNDO
+    this.ips = 3; //IMAGENES POR SEGUNDO
     this.jump = false; // SALTO DEL DINOSAURIO
     this.default_fly = 22; //VELOCIDAD DE ELEVACION ESTATICA
     this.fly_d = this.default_fly; // VELOCIDAD DE ELEVACION DINAMICA
