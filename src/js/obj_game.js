@@ -123,11 +123,13 @@ class c_captus{
     this.size = [60,70,90,40];
     this.captus = [];
     this.x = settings.x;
+    var image = new Image();
+    image.src = 'res/img/cactus/cactus2.png';
     var total_captus = parseInt(Math.random() * 3) + 1;
     for (var i = 0; i < total_captus; i++) {
       var h_captus = this.size[parseInt(Math.random() * 4)];
 
-      this.captus.push(new game_objet(ctx,{color: 'green', x: settings.x + ((i+1) * 20), y: settings.floor - h_captus, w: 20, h: h_captus}));
+      this.captus.push(new game_objet(ctx,{img: image,color: 'green', x: settings.x + ((i+1) * 20), y: settings.floor - h_captus, w: 20, h: h_captus}));
     }
   }
   colision(another){
@@ -138,7 +140,7 @@ class c_captus{
     return false;
   }
   draw(){
-    for (var i = 0; i < this.captus.length; i++) {this.captus[i].draw();}
+    for (var i = 0; i < this.captus.length; i++) {this.captus[i].drawImage();}
     return this;
   }
 
