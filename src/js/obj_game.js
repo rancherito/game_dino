@@ -3,7 +3,8 @@ var lienzo,w_lienzo,p_ctx = {w:0,h:0},ctx;
 var rec;
 var dino;
 var START_GAME;
-
+var RE_START_GAME;
+var MENSAJE_END_GAME;
 var o_captus = []; // array para los captus
 var o_ptero = []; // array para los pterodactilos
 var score = [];
@@ -69,11 +70,14 @@ class c_dino extends game_objet{
     super(ctx,{color: "yellow"});
     var l_texture_walk = ['res/img/DINO/DINO_01.png','res/img/DINO/DINO_01.1.png','res/img/DINO/DINO_02.png','res/img/DINO/DINO_02.1.png','res/img/DINO/DINO_03.png','res/img/DINO/DINO_03.1.png','res/img/DINO/DINO_04.png'];
     var l_texture_jump = ['res/img/DINO/DINO_JUMP_01.png'];
+    var l_texture_dead = ['res/img/DINO/DINO_DEAD_01.png'];
     this.texture_walk = [];
     this.texture_jump = [];
+    this.texture_dead = [];
 
     this.ips = 3; //IMAGENES POR SEGUNDO
     this.jump = false; // SALTO DEL DINOSAURIO
+    this.dead = false;
     this.default_fly = 22; //VELOCIDAD DE ELEVACION ESTATICA
     this.fly_d = this.default_fly; // VELOCIDAD DE ELEVACION DINAMICA
     this.speed_fall = 0.8; // VELOCIDAD DE SUBIDA Y CAIDA
@@ -88,6 +92,12 @@ class c_dino extends game_objet{
       var image = new Image();
       image.src = l_texture_jump[i];
       this.texture_jump.push(image);
+    }
+
+    for (var i = 0; i < l_texture_dead.length; i++) {
+      var image = new Image();
+      image.src = l_texture_dead[i];
+      this.texture_dead.push(image);
     }
 
     this.size.h = 80;
@@ -113,6 +123,8 @@ class c_dino extends game_objet{
 
   draw() {
     var texture = this.jump ? this.texture_jump : this.texture_walk;
+    if(this.dead) texture = this.texture_dead;
+
     var text3 = (global_time%(texture.length*this.ips));
     text3 = parseInt(text3/this.ips);
     this.ctx.drawImage(texture[text3],this.position.x,this.position.y,this.size.w,this.size.h);

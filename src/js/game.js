@@ -1,14 +1,27 @@
 function init_vars_game() {
 
         lienzo = $("#canvas");
-
+        RE_START_GAME = $('#re_star');
+        MENSAJE_END_GAME = $('#sms_x');
+        RE_START_GAME.click(function(){
+          update_game();
+        });
         w_lienzo = lienzo.parent();
         ctx = lienzo[0].getContext('2d');
         rec = new game_objet(ctx,{color: "gray"});
         dino = new c_dino(ctx);
       }
 
+      function pause_game(){
+        speed_objects = 0;
+        dino.dead = true;
+        YOU_LOSE();
+        //update_game();
+      }
+
       function update_game() {
+        MENSAJE_END_GAME.css({'display':'none'});
+        dino.dead = false;
         dino.jump = false;
         puntaje_total = 0;
         speed_objects = default_init_speed_objects;
@@ -50,8 +63,8 @@ function init_vars_game() {
           else o_captus.push(new c_captus(ctx,{floor: p_ctx.h - rec.size.h, x: ((my_c > my_p ? my_c : my_p) + pos)}));
         }
         if(collision_enable){
-          for (var i = 0; i < o_captus.length; i++) if (o_captus[i].colision(dino)) update_game();
-          for (var i = 0; i < o_ptero.length; i++) if (o_ptero[i].colision(dino)) update_game();
+          for (var i = 0; i < o_captus.length; i++) if (o_captus[i].colision(dino)) {pause_game();}
+          for (var i = 0; i < o_ptero.length; i++) if (o_ptero[i].colision(dino)) {pause_game();}
         }
 
 
@@ -61,7 +74,7 @@ function init_vars_game() {
       }
 
       function update_size(){
-
+        console.log(lienzo);
         lienzo.attr({width: w_lienzo.width(), height: w_lienzo.height()});
         p_ctx.w = w_lienzo.width()
         p_ctx.h = w_lienzo.height()
@@ -83,23 +96,22 @@ function init_vars_game() {
           puntaje_total+=2;
           dino.jump_dino();
           draw_game();
-          if(puntaje_total ==0){
-            YOU_LOSE();
-          }
+
+
+
+
           ctx.font = "20px Calibri";
           ctx.fillText(parseInt(puntaje_total/5)+"",10,50);
         }, FPS);
 
       }
       function YOU_LOSE(){
-            puntaje_total = puntaje_total*0;
-            MENSAJE = $('#sms_x');
-            RE_MENSAJE = $('#re_star');
+
+            puntaje_total = -1;
             MENU_MENSAJE = $('#menu');
-            MENSAJE.css({'display':'block'});
-            
+            MENSAJE_END_GAME.css({'display':'block'});
+
             MENU_MENSAJE.click(function(){
-              MENSAJE.css({'display':'none'});
               CONTEND.css({'display':'block'});
             });
       }
