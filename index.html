@@ -10,7 +10,32 @@
 
   </head>
   <body>
-    <button id="action">INICIAR JUEGO</button>
+    <section class="contenedor">
+    <div class="cuadro">
+      <div class="titulo">
+        <p>DINO-RAPTOR</p>
+      </div>
+      <div class="dato">
+        <label for="nik"> REGISTRE SU NICK :</label>
+        <i><input type="text" name="nik" id="nik" placeholder="Escriba su nick"></i>
+      </div>
+      <div class="cuadro_opc">
+        <div class="jugar">
+        <input type="submit" name="play" id="play" value="Jugar">
+      </div>
+      <div class="marcador">
+        <input type="submit" name="marcador" id="marcador" value="Marcador de Records">
+      </div>
+      </div>
+
+      <div class="cont_opc">
+        <div class="bt1">
+          <label for="mute">audio</label>
+          <input type="checkbox" name="mute" id="mute">
+        </div>
+      </div>
+    </div>
+  </section>
     <div class="" id="w_canvas">
       <canvas id="canvas" width="300" height="300"></canvas>
     </div>
@@ -21,7 +46,7 @@
 
       $(document).ready(function () {
         // iniciado metodos principales
-        START_GAME = $('button#action');
+        START_GAME = $('#play');
         START_GAME.click(function(){
 
         sound.play();
