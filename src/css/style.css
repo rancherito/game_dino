@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: Calibri; }
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; }
+
+#w_canvas {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; }
+
+canvas {
+  display: block; }
+
+button{
+  padding: 16px 20px;
+  background: #4CAF50;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+}
