@@ -11,7 +11,7 @@
 
   </head>
   <body>
-    <section class="contenedor">
+    <section class="contenedor" id="cont">
     <div class="cuadro">
       <div class="titulo">
         <p>DINO-RAPTOR</p>
@@ -48,13 +48,14 @@
       $(document).ready(function () {
         // iniciado metodos principales
         START_GAME = $('#play');
+        CONTEND = $('#cont');
         START_GAME.click(function(){
 
         sound.play();
         sound.volume = sound_enable ? 0.2 : 0;
 
         STAR_ALL_GAME();
-        START_GAME.css({'display':'none'});
+        CONTEND.css({'display':'none'});
         });
 
         
