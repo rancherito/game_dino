@@ -1,7 +1,7 @@
 function init_vars_game() {
 
         lienzo = $("#canvas");
-        
+
         w_lienzo = lienzo.parent();
         ctx = lienzo[0].getContext('2d');
         rec = new game_objet(ctx,{color: "gray"});
@@ -11,6 +11,8 @@ function init_vars_game() {
       function update_game() {
         dino.jump = false;
         puntaje_total = 0;
+        speed_objects = default_init_speed_objects;
+
         rec.ctx_update({w: p_ctx.w, h: 200, x: 0, y: p_ctx.h - 200}).draw();
         dino.ctx_update({x: 20, y: p_ctx.h - (200 + dino.size.h)}).draw();
         o_captus = [];
@@ -21,8 +23,6 @@ function init_vars_game() {
           o_captus.push(new c_captus(ctx,{floor: p_ctx.h - rec.size.h, x: my_c}).draw());
         }
         o_ptero = [];
-
-
       }
 
       function draw_game() {
@@ -61,7 +61,6 @@ function init_vars_game() {
       }
 
       function update_size(){
-        console.log(lienzo);
 
         lienzo.attr({width: w_lienzo.width(), height: w_lienzo.height()});
         p_ctx.w = w_lienzo.width()
@@ -74,11 +73,14 @@ function init_vars_game() {
         update_game();
         setInterval(function () {
           global_time++;
-          for (var i = 0; i < o_captus.length; i++) o_captus[i].add_x(-4);
-          for (var i = 0; i < o_ptero.length; i++) o_ptero[i].add_x(-4);
+
+          for (var i = 0; i < o_captus.length; i++) o_captus[i].add_x(speed_objects);
+          for (var i = 0; i < o_ptero.length; i++) o_ptero[i].add_x(speed_objects);
+
+          if((puntaje_total/10)%400==0) {speed_objects-=2; console.log(puntaje_total+' '+(puntaje_total%400));}
 
 
-          puntaje_total++;
+          puntaje_total+=2;
           dino.jump_dino();
           draw_game();
           if(puntaje_total ==0){
@@ -86,7 +88,7 @@ function init_vars_game() {
             sound.currentTime = 0;
           }
           ctx.font = "20px Calibri";
-          ctx.fillText(parseInt(puntaje_total/10)+"",10,50);
+          ctx.fillText(parseInt(puntaje_total/5)+"",10,50);
         }, FPS);
       }
 

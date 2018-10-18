@@ -6,13 +6,15 @@ var START_GAME;
 
 var o_captus = []; // array para los captus
 var o_ptero = []; // array para los pterodactilos
+var score = [];
 var sound = new Audio("res/sound/naruto_mejorado.mp3"); // OBTENCION DE AUDIO
 var puntaje_total = 0; // puntaje obtenido
 var global_time = 0; //tiempo global por cada impresion de imagenes
 var collision_enable = true; // enciende las coliciones [false/true]
 var sound_enable = true; //enciende el sonido [false/true]
 var FPS = 1000/50;
-
+var default_init_speed_objects = -2;
+var speed_objects = default_init_speed_objects;
 // keys
 var KEYS = {UP: 87, RIGHT: 68, DOWN: 83, LEFT: 65}; // ID de las teclas
 var A_KEYS = {UP: false, RIGHT: false, DOWN: false, LEFT: false}; // Encendido de las teclas [false/true]
