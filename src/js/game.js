@@ -84,12 +84,24 @@ function init_vars_game() {
           dino.jump_dino();
           draw_game();
           if(puntaje_total ==0){
-            console.log('GOOD GAME VATO');
-            sound.currentTime = 0;
+            YOU_LOSE();
           }
           ctx.font = "20px Calibri";
           ctx.fillText(parseInt(puntaje_total/5)+"",10,50);
         }, FPS);
+
+      }
+      function YOU_LOSE(){
+            puntaje_total = puntaje_total*0;
+            MENSAJE = $('#sms_x');
+            RE_MENSAJE = $('#re_star');
+            MENU_MENSAJE = $('#menu');
+            MENSAJE.css({'display':'block'});
+            
+            MENU_MENSAJE.click(function(){
+              MENSAJE.css({'display':'none'});
+              CONTEND.css({'display':'block'});
+            });
       }
 
 

@@ -10,11 +10,13 @@
 	height: 100%;
 	background-color: rgba(0,0,0,0.5);
 	font-family: Calibri;
+	font-size: 30px;
 }
 .mensaje_x{
-	width: 400px;
+	width: 500px;
 	padding: 10px;
-	margin: 150px auto;
+	margin: auto;
+	transform: translateY(25%);
 	border-radius: 5px;
 	background-color: #fff;
 	display: flex;
@@ -22,16 +24,19 @@
 	justify-content: center;
 }
 .img_x{
-	width: 100px;
-	height: 100px;
+	width: 240px;
+	height: 300px;
 	padding: 10px;
 	margin: 10px;
 	background-image: url('../../res/img/perdiste.png');
+	background-size: cover;
+	background-position: center;
 }
 .text_x{
 	padding: 10px;
 	margin: 50px 10px;
 	color: #9c27b0;
+	font-weight: bold;
 }
 .cont_x{
 	padding: 10px;
@@ -42,6 +47,7 @@
 	border: 1px solid #9c27b0;
 	color: #9c27b0;
 	background-color: #fff;
+	font-size: 20px;
 }
 .cont_x input:hover{
 	transition: 0.5s;
