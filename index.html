@@ -6,6 +6,7 @@
     <script type="text/javascript" src="src/js/jquery-3.2.1.min.js"></script>
     <script src="src/js/obj_game.js"></script>
     <link rel="stylesheet" type="text/css" href="src/css/interfaz.css">
+    <link rel="stylesheet" type="text/css" href="src/css/score_interfaz.css">
     <script src="src/js/game.js"></script>
     <link rel="stylesheet" href="src/css/style.css">
 
@@ -37,6 +38,27 @@
       </div>
     </div>
   </section>
+  <section class="score" id="scor">
+    <div class="cuadro_score">
+      <div class="titulo_score">
+        <p>PUNTAJE DE JUGADORES</p>
+      </div>
+      <div class="lista_score">
+        <div class="num_score">
+          <p>1</p>
+        </div>
+        <div class="nombre_score">
+          <p>Player Nro 1</p>
+        </div>
+        <div class="puntuacion_s">
+          <p>500</p>
+        </div>
+      </div>
+      <div class="return_score">
+        <input type="submit" name="return" id="return" value="REGRESAR AL MENÚ ANTERIOR">
+      </div>
+    </div>
+  </section>
     <div class="" id="w_canvas">
       <canvas id="canvas" width="300" height="300"></canvas>
     </div>
@@ -49,6 +71,9 @@
         // iniciado metodos principales
         START_GAME = $('#play');
         CONTEND = $('#cont');
+        SCORE_VERIF = $('#marcador');
+        CONT_SCORE = $('#scor');
+        RETURN_MENU = $('#return');
         START_GAME.click(function(){
 
         sound.play();
@@ -56,6 +81,14 @@
 
         STAR_ALL_GAME();
         CONTEND.css({'display':'none'});
+        });
+        SCORE_VERIF.click(function(){
+          CONTEND.css({'display':'none'});
+          CONT_SCORE.css({'display':'block'});
+        });
+        RETURN_MENU.click(function(){
+          CONT_SCORE.css({'display':'none'});
+          CONTEND.css({'display':'block'});
         });
 
         
