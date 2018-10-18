@@ -5,6 +5,7 @@ var dino;
 var START_GAME;
 var RE_START_GAME;
 var MENSAJE_END_GAME;
+var MENU;
 var o_captus = []; // array para los captus
 var o_ptero = []; // array para los pterodactilos
 var score = [];
@@ -13,6 +14,7 @@ var puntaje_total = 0; // puntaje obtenido
 var global_time = 0; //tiempo global por cada impresion de imagenes
 var collision_enable = true; // enciende las coliciones [false/true]
 var sound_enable = true; //enciende el sonido [false/true]
+var all_game_on = false;
 var FPS = 1000/50;
 var default_init_speed_objects = -2;
 var speed_objects = default_init_speed_objects;
@@ -105,18 +107,20 @@ class c_dino extends game_objet{
   }
 
   jump_dino(){
-    if (this.jump === false) {
-      if (A_KEYS.UP) this.jump = true;
-    }
-    else {
-      dino.position.y -= this.fly_d;
-      this.fly_d -= this.speed_fall; // disminucion del vuelo del dinosaurio
+    if(!this.dead){
+      if (this.jump === false) {
+        if (A_KEYS.UP) this.jump = true;
+      }
+      else {
+        dino.position.y -= this.fly_d;
+        this.fly_d -= this.speed_fall; // disminucion del vuelo del dinosaurio
 
-      // calculo de la posicion maxima de bajada del dinosaurio
-      if (dino.position.y >= p_ctx.h - rec.size.h - dino.size.h ) {
-        this.jump = false;
-        dino.position.y = p_ctx.h - rec.size.h - dino.size.h
-        this.fly_d = this.default_fly;
+        // calculo de la posicion maxima de bajada del dinosaurio
+        if (dino.position.y >= p_ctx.h - rec.size.h - dino.size.h ) {
+          this.jump = false;
+          dino.position.y = p_ctx.h - rec.size.h - dino.size.h
+          this.fly_d = this.default_fly;
+        }
       }
     }
   }

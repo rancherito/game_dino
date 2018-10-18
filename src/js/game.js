@@ -10,6 +10,11 @@ function init_vars_game() {
         ctx = lienzo[0].getContext('2d');
         rec = new game_objet(ctx,{color: "gray"});
         dino = new c_dino(ctx);
+
+
+        sound.onended = function(){
+          sound.play();
+        }
       }
 
       function pause_game(){
@@ -90,29 +95,31 @@ function init_vars_game() {
           for (var i = 0; i < o_captus.length; i++) o_captus[i].add_x(speed_objects);
           for (var i = 0; i < o_ptero.length; i++) o_ptero[i].add_x(speed_objects);
 
-          if((puntaje_total/10)%400==0) {speed_objects-=2; console.log(puntaje_total+' '+(puntaje_total%400));}
+          if((puntaje_total/5)%300==0) speed_objects-=2;
 
 
           puntaje_total+=2;
           dino.jump_dino();
           draw_game();
 
-
-
-
-          ctx.font = "20px Calibri";
+          ctx.font = "30px Calibri";
           ctx.fillText(parseInt(puntaje_total/5)+"",10,50);
         }, FPS);
 
       }
+
       function YOU_LOSE(){
+        console.log(puntaje_total);
+          if(MENSAJE_END_GAME.css('display') == 'none'){
+            $('#score_box').text(parseInt((puntaje_total/5)));
+          }
 
             puntaje_total = -1;
             MENU_MENSAJE = $('#menu');
             MENSAJE_END_GAME.css({'display':'block'});
 
             MENU_MENSAJE.click(function(){
-              CONTEND.css({'display':'block'});
+              MENU.css({'display':'block'});
             });
       }
 

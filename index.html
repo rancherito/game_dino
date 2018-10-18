@@ -66,6 +66,7 @@
       <div class="img_x"></div>
       <div class="text_x">
         <p>PERDISTE :'V</p>
+        <p style="font-size: 16px;"><spa id="score_box">0</spa> PUNTOS</p>
       </div>
       <div class="cont_x">
         <input type="submit" name="re_star" id="re_star" value="REINICIAR JUEGO">
@@ -85,8 +86,7 @@
       $(document).ready(function Empezar() {
         // iniciado metodos principales
         START_GAME = $('#play');
-
-        CONTEND = $('#cont');
+        MENU = $('#cont');
         SCORE_VERIF = $('#marcador');
         CONT_SCORE = $('#scor');
         RETURN_MENU = $('#return');
@@ -100,17 +100,18 @@
 
         sound.play();
         sound.volume = sound_enable ? 0.2 : 0;
-
-        STAR_ALL_GAME();
-        CONTEND.css({'display':'none'});
+        if (all_game_on) update_game();
+        else STAR_ALL_GAME();
+        all_game_on = true;
+        MENU.css({'display':'none'});
         });
         SCORE_VERIF.click(function(){
-          CONTEND.css({'display':'none'});
+          MENU.css({'display':'none'});
           CONT_SCORE.css({'display':'block'});
         });
         RETURN_MENU.click(function(){
           CONT_SCORE.css({'display':'none'});
-          CONTEND.css({'display':'block'});
+          MENU.css({'display':'block'});
         });
 
 
